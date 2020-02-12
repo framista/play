@@ -56,19 +56,19 @@ body{
     grid-gap: 2px;
 }
 
-.column1:hover{
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
 .window{
-    background-color: aquamarine;
+    background-color: green;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .circle{
-    background-color: green; 
+    background-color: aquamarine; 
+}
+
+.column{
+    background-color: rgba(114, 128, 114, 0.9);
 }
 
 @media only screen and (max-width: 659px){
@@ -78,6 +78,7 @@ body{
     }
     .circle{
         width: 8vw;
+        height: 8vw;
         border-radius: 8vw;
     }
 }
