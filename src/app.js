@@ -50,8 +50,6 @@ function addChip(e) {
 }
 
 function isFinished(position) {
-    console.log(position)
-
     let tabBoard = new Array();
     let counter = 0;
     for (let x = 0; x < rowsBoard; x++) {
@@ -61,22 +59,39 @@ function isFinished(position) {
         }
     }
 
+    // console.log("skos: " + generateTable(position, tabBoard, -1, -1, 1, 1))
+    // console.log("pion: " + generateTable(position, tabBoard, -1, 0, 1, 0))
+    // console.log("skos: " + generateTable(position, tabBoard, 1, -1, -1, 1))
+    // console.log("pioz: " + generateTable(position, tabBoard, 0, -1, 0, 1))
     const bias1 = generateTable(position, tabBoard, -1, -1, 1, 1)
-    isWin(bias1)
+    isWin(bias1, 0, position)
     const vertically = generateTable(position, tabBoard, -1, 0, 1, 0)
-    isWin(vertically)
+    isWin(vertically, 1, position)
     const bias2 = generateTable(position, tabBoard, 1, -1, -1, 1)
-    isWin(bias2)
+    isWin(bias2, 2, position)
     const horizontally = generateTable(position, tabBoard, 0, -1, 0, 1)
-    isWin(horizontally)
-
+    isWin(horizontally, 3, position)
 }
 
-function isWin(toVerify) {
+function isWin(toVerify, direction, position) {
+    const { tab, pos } = toVerify
+    const tabDirection = [8, 7, 6, 1]
+    const moveAmount = tabDirection[direction]
     const pattern = player.charAt(0).repeat(4)
-    if (toVerify.join("").includes(pattern)) {
-        alert("wygrana")
+    const comparison = tab.join("")
+    if (comparison.includes(pattern)) {
+        console.log("won " + pattern + " " + tab + "  " + pos)
+        console.log(comparison.indexOf(pattern))
+        const startIndex = comparison.indexOf(pattern)
+        const startPosition = position - (pos - startIndex) * moveAmount
+        console.log(startPosition)
+        let counter = 0;
+        for (let i = startIndex; i < comparison.length - startIndex; i++) {
+            // if (comparison[i] )
+        }
+
     }
+
 }
 
 function generateTable(position, tabBoard, inc1, inc2, inc3, inc4) {
@@ -84,7 +99,7 @@ function generateTable(position, tabBoard, inc1, inc2, inc3, inc4) {
     const tab2 = generateSubTable(position, tabBoard, inc3, inc4)
     tab1.reverse()
     const tab = [...tab1, valueBoard[position], ...tab2]
-    return tab
+    return { tab, pos: tab1.length }
 }
 
 function generateSubTable(position, tabBoard, incrementRow, incrementColumn) {
