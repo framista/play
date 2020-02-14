@@ -58,11 +58,6 @@ function isFinished(position) {
             tabBoard[x][y] = valueBoard[counter++]
         }
     }
-
-    // console.log("skos: " + generateTable(position, tabBoard, -1, -1, 1, 1))
-    // console.log("pion: " + generateTable(position, tabBoard, -1, 0, 1, 0))
-    // console.log("skos: " + generateTable(position, tabBoard, 1, -1, -1, 1))
-    // console.log("pioz: " + generateTable(position, tabBoard, 0, -1, 0, 1))
     const bias1 = generateTable(position, tabBoard, -1, -1, 1, 1)
     isWin(bias1, 0, position)
     const vertically = generateTable(position, tabBoard, -1, 0, 1, 0)
@@ -75,23 +70,22 @@ function isFinished(position) {
 
 function isWin(toVerify, direction, position) {
     const { tab, pos } = toVerify
-    const tabDirection = [8, 7, 6, 1]
+    const tabDirection = [8, 7, -6, 1]
     const moveAmount = tabDirection[direction]
     const pattern = player.charAt(0).repeat(4)
     const comparison = tab.join("")
     if (comparison.includes(pattern)) {
-        console.log("won " + pattern + " " + tab + "  " + pos)
-        console.log(comparison.indexOf(pattern))
         const startIndex = comparison.indexOf(pattern)
         const startPosition = position - (pos - startIndex) * moveAmount
-        console.log(startPosition)
-        let counter = 0;
-        for (let i = startIndex; i < comparison.length - startIndex; i++) {
-            // if (comparison[i] )
+        let circleWonPosition
+        for (let i = startIndex; i < comparison.length; i++) {
+            if (comparison[i] !== player.charAt(0)) {
+                break
+            }
+            circleWonPosition = (i - startIndex) * moveAmount + startPosition
+            childrenBoard.item(circleWonPosition).firstElementChild.classList.add(`circle--won`)
         }
-
     }
-
 }
 
 function generateTable(position, tabBoard, inc1, inc2, inc3, inc4) {
