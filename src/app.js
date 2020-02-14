@@ -19,6 +19,10 @@ windows.forEach(window => {
     })
 })
 
+tab.addEventListener('click', () => {
+    startAgain()
+})
+
 fourlineBoard.addEventListener('mouseleave', () => windows.forEach(window => window.classList.remove("column")))
 
 function checkColumn(e) {
@@ -117,3 +121,12 @@ function generateSubTable(position, tabBoard, incrementRow, incrementColumn) {
     return tab
 }
 
+function startAgain() {
+    player = you
+    tab.style.backgroundColor = "#ff3399"
+    for (let i = 0; i < valueBoard.length; i++) {
+        valueBoard[i] = "e"
+        childrenBoard.item(i).firstElementChild.classList = "circle"
+    }
+    console.log(valueBoard)
+}
