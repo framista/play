@@ -50,6 +50,7 @@ function addChip(e) {
             break
         }
         insertIndex -= columnsBoard
+        if(insertIndex < 0) return
     }
     const color = player === you ? "#cc33ff" : "#ff3399"
     tab.style.backgroundColor = color
