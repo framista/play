@@ -2,6 +2,10 @@ const windows = document.querySelectorAll('.window')
 const fourlineBoard = document.querySelector('.fourline')
 const childrenBoard = fourlineBoard.children
 const tab = document.querySelector(".nav__li")
+const lightbox = document.createElement('div')
+
+lightbox.id = 'lightbox'
+document.body.appendChild(lightbox)
 
 const rowsBoard = 6
 const columnsBoard = 7
@@ -21,6 +25,12 @@ windows.forEach(window => {
 
 tab.addEventListener('click', () => {
     startAgain()
+})
+
+lightbox.addEventListener('click', e => {
+    startAgain()
+    lightbox.classList.remove('lightbox--active')
+    lightbox.style.display = "none"
 })
 
 fourlineBoard.addEventListener('mouseleave', () => windows.forEach(window => window.classList.remove("column")))
@@ -50,7 +60,7 @@ function addChip(e) {
             break
         }
         insertIndex -= columnsBoard
-        if(insertIndex < 0) return
+        if (insertIndex < 0) return
     }
     const color = player === you ? "#cc33ff" : "#ff3399"
     tab.style.backgroundColor = color
@@ -94,6 +104,7 @@ function isWin(toVerify, direction, position) {
             circleWonPosition = (i - startIndex) * moveAmount + startPosition
             childrenBoard.item(circleWonPosition).firstElementChild.classList.add(`circle--won`)
         }
+        setTimeout( () => wonLightbox(), 2000)
     }
 }
 
@@ -129,5 +140,19 @@ function startAgain() {
         valueBoard[i] = "e"
         childrenBoard.item(i).firstElementChild.classList = "circle"
     }
-    console.log(valueBoard)
+}
+
+function wonLightbox() {
+    lightbox.classList.add('lightbox--active')
+    lightbox.style.display = "block"
+    lightbox.style.display = "flex"
+    const div = document.createElement('div')
+    div.classList.add('div--won')
+    div.innerHTML = "YOU WON"
+    const color = player === you ? "#cc33ff" : "#ff3399"
+    div.style.color = color
+    while(lightbox.firstChild){
+        lightbox.removeChild(lightbox.firstChild)
+    }
+    lightbox.appendChild(div)
 }
