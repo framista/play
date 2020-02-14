@@ -1,0 +1,138 @@
+:root {
+    box-sizing: border-box;
+    font-size: 10px;
+    --you: rgb(255, 51, 153);
+    --opponent: rgb(204, 51, 255);
+}
+
+*, ::before, ::after {
+    box-sizing: inherit;
+    margin: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    width: 100vw;
+    height: 100vh;
+}
+
+.nav__ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+    font-size: 2rem;
+    padding: 10px;
+}
+
+.nav__li {
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    letter-spacing: 1px;
+}
+
+.nav__li:hover {
+    background-color: aquamarine;
+    color: black;
+}
+
+.nav__li--active {
+    background-color: var(--you);
+    color: black;
+    font-weight: bold;
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.fourline {
+    display: grid;
+    padding: 2px;
+    border: 2px solid aquamarine;
+}
+
+.player{
+    font-size: 15rem;
+}
+.window {
+    background-color: rgb(51, 204, 51);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+}
+
+.circle {
+    background-color: aquamarine;
+    border: 2px solid black;
+}
+
+.circle--selectedyou {
+    background-color: var(--you);
+}
+
+.circle--selectedopponent {
+    background-color: var(--opponent);
+}
+
+.circle--won {
+    border: 5px solid gold;
+}
+
+.column {
+    background-color: rgba(114, 128, 114, 0.9);
+}
+
+@media only screen and (max-width: 659px) {
+    .fourline {
+        grid-template-columns: repeat(7, 10vw);
+        grid-auto-rows: 10vw;
+    }
+    .circle {
+        width: 8vw;
+        height: 8vw;
+        border-radius: 8vw;
+    }
+}
+
+@media only screen and (min-width: 660px) {
+    .fourline {
+        grid-template-columns: repeat(7, 75px);
+        grid-auto-rows: 75px;
+    }
+    .circle {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+    }
+}
+
+#lightbox{
+    position: fixed;
+    z-index: 1000;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+    display: none;
+}
+
+.lightbox--active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div--won{
+    font-size: 10rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*# sourceMappingURL=/style.78032849.css.map */

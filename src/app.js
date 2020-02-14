@@ -104,7 +104,7 @@ function isWin(toVerify, direction, position) {
             circleWonPosition = (i - startIndex) * moveAmount + startPosition
             childrenBoard.item(circleWonPosition).firstElementChild.classList.add(`circle--won`)
         }
-        setTimeout( () => wonLightbox(), 2000)
+        setTimeout( () => wonLightbox(), 500)
     }
 }
 

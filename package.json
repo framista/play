@@ -1,0 +1,27 @@
+{
+  "name": "games",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "development": "parcel index.html -d public --public-url ./",
+    "build": "parcel build index.html -d public --public-url ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/framista/play.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/framista/play/issues"
+  },
+  "homepage": "https://github.com/framista/play#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.7.4"
+  }
+}
