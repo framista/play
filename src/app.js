@@ -1,6 +1,7 @@
 const windows = document.querySelectorAll('.window')
 const fourlineBoard = document.querySelector('.fourline')
 const childrenBoard = fourlineBoard.children
+const tab = document.querySelector(".nav__li")
 
 const rowsBoard = 6
 const columnsBoard = 7
@@ -46,7 +47,10 @@ function addChip(e) {
         }
         insertIndex -= columnsBoard
     }
+    const color = player === you ? "#cc33ff" : "#ff3399"
+    tab.style.backgroundColor = color
     player = player === you ? opponent : you
+
 }
 
 function isFinished(position) {
