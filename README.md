@@ -1,6 +1,6 @@
 # play
 ## General info
-A game - four in row - for two player.
+A game - four in row - for two players.
 ## Technologies
 * JavaScript (parcel-bundler)
 * CSS3
