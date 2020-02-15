@@ -19,6 +19,9 @@ windows.forEach(window => {
         checkColumn(e)
     })
     window.addEventListener('click', e => {
+        if (!valueBoard.includes("e")) {
+            informationLightbox("DRAW")
+        }    
         addChip(e)
     })
 })
@@ -104,7 +107,7 @@ function isWin(toVerify, direction, position) {
             circleWonPosition = (i - startIndex) * moveAmount + startPosition
             childrenBoard.item(circleWonPosition).firstElementChild.classList.add(`circle--won`)
         }
-        setTimeout( () => wonLightbox(), 500)
+        setTimeout( () => informationLightbox("YOU WON"), 500)
     }
 }
 
@@ -142,13 +145,13 @@ function startAgain() {
     }
 }
 
-function wonLightbox() {
+function informationLightbox(message) {
     lightbox.classList.add('lightbox--active')
     lightbox.style.display = "block"
     lightbox.style.display = "flex"
     const div = document.createElement('div')
     div.classList.add('div--won')
-    div.innerHTML = "YOU WON"
+    div.innerHTML = message
     const color = player === you ? "#cc33ff" : "#ff3399"
     div.style.color = color
     while(lightbox.firstChild){
