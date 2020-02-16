@@ -48,7 +48,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
 }
 
 .fourline {
@@ -60,6 +59,7 @@ body {
 .player{
     font-size: 15rem;
 }
+
 .window {
     background-color: rgb(51, 204, 51);
     display: flex;
@@ -90,6 +90,10 @@ body {
 }
 
 @media only screen and (max-width: 659px) {
+    .board{
+        height: 70vw;
+        margin-top: 10vw;
+    }
     .fourline {
         grid-template-columns: repeat(7, 10vw);
         grid-auto-rows: 10vw;
@@ -102,6 +106,9 @@ body {
 }
 
 @media only screen and (min-width: 660px) {
+    .board{
+        margin-top: 30px;
+    }
     .fourline {
         grid-template-columns: repeat(7, 75px);
         grid-auto-rows: 75px;
