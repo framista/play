@@ -65,7 +65,7 @@ function addChip(e) {
         insertIndex -= columnsBoard
         if (insertIndex < 0) return
     }
-    const color = player === you ? "#cc33ff" : "#ff3399"
+    const color = player === you ? "#1b0648" : "#ff3399"
     tab.style.backgroundColor = color
     player = player === you ? opponent : you
 
@@ -152,7 +152,7 @@ function informationLightbox(message) {
     const div = document.createElement('div')
     div.classList.add('div--won')
     div.innerHTML = message
-    const color = player === you ? "#cc33ff" : "#ff3399"
+    const color = player === you ? "#1b0648" : "#ff3399"
     div.style.color = color
     while(lightbox.firstChild){
         lightbox.removeChild(lightbox.firstChild)
